@@ -1,0 +1,31 @@
+Liste tests TDD :
+
+Quand un entrant est ajouté, il est ajouté à la pile
+Si calcul avec 0 entrée, alors résultat 0
+Si calcul avec 1 entrée, alors résultat est l'entrée
+Si le calcul est fait avec un entrant négatif seul, alors le résultat est cette valeur
+Si le calcul est fait avec un entrant à virgule seul, alors le résultat est cette valeur
+Si le calcul est fait avec un symbole seul, alors erreur
+Si un entrant n'est ni un chiffre ni un symbole autorisé, alors erreur
+Si calcul avec 2 chiffres et un 1 symbole +, alors on exécute le calcul
+Après calcul, alors il n'y a plus qu'un élément dans la pile
+Après calcul, alors il n'y a plus que le résultat dans la pile
+Si calcul avec 2 chiffres et un 1 symbole -, alors on exécute le calcul
+Si calcul avec 2 chiffres et un 1 symbole *, alors on exécute le calcul
+Si calcul avec 2 chiffres et un 1 symbole /, alors on exécute le calcul
+Si calcul avec 3 chiffres et 2 symboles, alors on exécute le calcul
+Quand un entrant est ajouté, il sera le premier retiré
+Si un entrant dépasse la valeur max du type utilisé, alors erreur
+Si le résultat dépasse la valeur max du type utilisé, alors erreur
+Si on fait une / par 0, alors erreur
+Si l'opération est en préfixe, alors erreur
+Si l'opération est en infixe, alors erreur
+S'il n'y a que des chiffres, alors erreur
+S'il n'y a que des symboles, alors erreur
+S'il n'y a qu'un seul symbole dans l'opération, erreur
+S'il n'y a qu'un chiffre et un symbole dans l'opération (+-*/), erreur
+Division non commutative : si a/b alors résultat différent de b/a
+Soustraction non commutative : si a/b alors résultat différent de b/a
+Addition commutative : si a+b alors même résultat que b+a
+Multiplication commutative : si a*b alors même résultat que b*a
+Calcul complexe en NPI
