@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPI Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .calculator {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .calculator button {
+            margin: 5px;
+            padding: 10px;
+            font-size: 16px;
+            width: 50px;
+        }
+        .calculator .display {
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+            width: 220px;
+            text-align: right;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>NPI Calculator</h1>
+        <div id="display" class="display"></div>
+        <div>
+            <button onclick="addToStack('1')">1</button>
+            <button onclick="addToStack('2')">2</button>
+            <button onclick="addToStack('3')">3</button>
+            <button onclick="addToStack('+')">+</button>
+        </div>
+        <div>
+            <button onclick="addToStack('4')">4</button>
+            <button onclick="addToStack('5')">5</button>
+            <button onclick="addToStack('6')">6</button>
+            <button onclick="addToStack('-')">-</button>
+        </div>
+        <div>
+            <button onclick="addToStack('7')">7</button>
+            <button onclick="addToStack('8')">8</button>
+            <button onclick="addToStack('9')">9</button>
+            <button onclick="addToStack('*')">*</button>
+        </div>
+        <div>
+            <button onclick="addToStack('0')">0</button>
+            <button onclick="calculateStack()">=</button>
+            <button onclick="addToStack('/')">/</button>
+        </div>
+        <div>
+            <button onclick="addToStack('C')">C</button>
+        </div>
+    </div>
+    <script type="module" src="../dist/bundle.js"></script>
+</body>
+</html>

@@ -13,19 +13,27 @@ To get started with this project, follow these steps:
    ```
 
 2. **Install dependencies:**
-   ```
+   ```sh
    npm install
    ```
 
 3. **Compile TypeScript files:**
-   ```
+   ```sh
    npx tsc
    ```
 
-4. **Run the application:**
+4. **Build the project using Webpack:**
+   ```sh
+   npm run build
    ```
-   node dist/index.js
+
+5. **Run the application:**
+   ```sh
+   npm start
    ```
+
+6. **Open the application in a web browser:**
+   Open your web browser and navigate to `http://localhost:9000` to see the NPI Calculator interface.
 
 ## Running Tests
 
@@ -39,7 +47,4 @@ npm test
 - The TypeScript configuration can be found in `tsconfig.json`. You can modify the compiler options as needed.
 - The `package.json` file contains scripts and dependencies required for the project.
 - The Jest configuration can be found in `jest.config.js`.
-
-## Contributing
-
-Feel free to submit issues or pull requests for improvements or bug fixes.
+- The Webpack configuration can be found in `webpack.config.js`.
