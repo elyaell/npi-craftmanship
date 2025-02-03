@@ -29,3 +29,5 @@ Soustraction non commutative : si a/b alors résultat différent de b/a
 Addition commutative : si a+b alors même résultat que b+a
 Multiplication commutative : si a*b alors même résultat que b*a
 Calcul complexe en NPI
+Si un entrante est inf à la valeur min du type utilisé, alors erreur
+Si le résultat est inf à la valeur min du type utilisé, alors erreur
