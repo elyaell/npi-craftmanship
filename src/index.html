@@ -85,8 +85,8 @@
             <div id="display" class="display"></div>
             <div>
                 <button class="button-other" onclick="clearStack()">C</button>
+                <button class="button-other" onclick="clearDisplay()">CE</button>
                 <button class="button-other" onclick="removeLast()">←</button>
-                <button style="visibility: hidden;"> </button>
                 <button class="button-other" onclick="calculateStack()">=</button>
             </div>
             <div>
@@ -115,7 +115,7 @@
             </div>
             <div>
                 <button style="visibility: hidden;"> </button>
-                <button style="visibility: hidden;"> </button>
+                <button class="button-symbol" onclick="addToStack('!')">!</button>
                 <button class="button-other button-enter" onclick="addToStack('')">ENTER</button>
             </div>
         </div>

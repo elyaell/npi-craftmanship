@@ -4,13 +4,13 @@ import { Stack } from "../../models/impl/stack.impl";
 
 export class CalculatorNPI implements ICalculator {
 
-    private _stack: IStack<string> = new Stack<string>() ;
+    private _stack: IStack<string> = new Stack<string>();
     private _total: number = 0;
 
     stack() {
         return this._stack;
     }
-    
+
     values(): string[] {
         return this._stack.values();
     }
@@ -36,7 +36,7 @@ export class CalculatorNPI implements ICalculator {
     }
 
     private isValidInput(value: string) {
-        const valid = ["+", "-", "*", "/"];
+        const valid = ["+", "-", "*", "/", "!"];
         return !isNaN(parseFloat(value)) || valid.includes(value);
     }
 
@@ -48,16 +48,27 @@ export class CalculatorNPI implements ICalculator {
 
     private executeOperation(): string {
         const element = this._stack.pop() ?? undefined;
-        if (element === undefined) {   
-            throw new Error("Erreur de calcul");
+        if (element === undefined) {
+            return "";
         }
         if (!isNaN(parseFloat(element))) {
             return element;
         }
 
+        if (element === "!") {
+            const a = this.executeOperation();
+            const total = this.factorial(parseInt(a));
+            this.checkSafeInteger(total);
+            return total.toString();
+        }
+
         const b = this.executeOperation();
         const a = this.executeOperation();
         let total = 0;
+
+        if (["+", "-", "*", "/"].includes(element) && (b === "" || a === "")) { 
+            throw new Error("Erreur de calcul");
+        }
 
         switch (element) {
             case "+":
@@ -106,4 +117,15 @@ export class CalculatorNPI implements ICalculator {
             throw new Error("Erreur de calcul");
         }
     }
+
+    private factorial(n: number): number {
+        if (n < 0) {
+            throw new Error("Erreur de calcul");
+        }
+        if (n === 0 || n === 1) {
+            return 1;
+        }
+        return n * this.factorial(n - 1);
+    }
+
 }

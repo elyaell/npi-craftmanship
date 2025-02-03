@@ -19,36 +19,54 @@ export function getNpi(): ICalculator {
 }
 
 export function addToStack(value: string): void {
-    if (tempExpression !== "") {
-        if (isNegative) {
-            tempExpression = "-" + tempExpression;
+    try {
+        if (tempExpression !== "") {
+            if (isNegative) {
+                tempExpression = "-" + tempExpression;
+            }
+            npi.push(tempExpression);
+            (document.getElementById('display') as HTMLElement).innerText = "";
         }
-        npi.push(tempExpression);
+        isNegative = false;
+        tempExpression = "";
+        if (value !== "") {
+            npi.push(value);
+        }
+    } catch (e) {
+        console.log(e)
+        clearStack();
+        (document.getElementById('display') as HTMLElement).innerText = "Error é";
     }
-    isNegative = false;
-    tempExpression = "";
-    if (value !== "") {
-        npi.push(value);
-    }
-    updateCurrentExp();
+
+    (document.getElementById('current') as HTMLElement).innerText = npi.values().join(" ");
 }
 
 export function removeLast(): void {
     npi.removeLast();
-    updateCurrentExp();
+    (document.getElementById('current') as HTMLElement).innerText = npi.values().join(" ");
+}
+
+export function clearDisplay(): void {
+    tempExpression = "";
+    isNegative = false;
+    (document.getElementById('display') as HTMLElement).innerText = "";
 }
 
 export function clearStack(): void {
     tempExpression = "";
     npi.clear();
-    updateCurrentExp();
+    (document.getElementById('display') as HTMLElement).innerText = "";
+    (document.getElementById('current') as HTMLElement).innerText = npi.values().join(" ");
 }
 
 export function calculateStack(): void {
     try {
-        let expression = npi.values().join(" ");
+        if (npi.values().length === 0) {
+            return
+        }
+        const expression = npi.values().join(" ");
         npi.calculate();
-        updateCurrentExp();
+        (document.getElementById('current') as HTMLElement).innerText = npi.total().toString();
         addToHistory(expression, npi.total());
     } catch (e) {
         (document.getElementById('display') as HTMLElement).innerText = "Error";
@@ -60,14 +78,6 @@ export function nextIsNegative(): void {
     isNegative = !isNegative;
     let temp = (isNegative ? "-" : "") + tempExpression;
     (document.getElementById('display') as HTMLElement).innerText = temp;
-}
-
-export function updateCurrentExp(): void {
-    let temp = npi.values().join(" ");
-    temp += " ";
-    temp += (isNegative ? "-" : "") + tempExpression;
-    (document.getElementById('display') as HTMLElement).innerText = "";
-    (document.getElementById('current') as HTMLElement).innerText = temp;
 }
 
 export function addToHistory(expr: string, result: number): void {
@@ -93,5 +103,6 @@ export function updateHistoryDisplay(): void {
 (window as any).addToStack = addToStack;
 (window as any).calculateStack = calculateStack;
 (window as any).clearStack = clearStack;
+(window as any).clearDisplay = clearDisplay;
 (window as any).removeLast = removeLast;
 (window as any).nextIsNegative = nextIsNegative;

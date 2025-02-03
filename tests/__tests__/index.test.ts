@@ -1,10 +1,9 @@
 // filepath: /c:/Users/softeam2/Documents/npi/npi-craftmanship/tests/__tests__/index.test.ts
-import { addToStack, clearStack, removeLast, calculateStack, addToValue, nextIsNegative, getNpi } from '../../src';
+import { addToStack, clearStack, removeLast, calculateStack, addToValue, nextIsNegative, getNpi, clearDisplay } from '../../src';
 import '@testing-library/jest-dom';
 
-fdescribe('NPI Calculator', () => {
+describe('NPI Calculator', () => {
     beforeEach(() => {
-        clearStack();
         document.body.innerHTML = (globalThis as any).htmlContent;
     });
     afterEach(() => {
@@ -30,7 +29,7 @@ fdescribe('NPI Calculator', () => {
         addToStack("5");
         addToStack("+");
         calculateStack();
-        expect(getNpi().values()).toEqual(["9"]);
+        expect(getNpi().total()).toEqual(9);
     });
     test('Quand appel addToValue() alors élément dans expression temporaire pas ajout dans pile ', () => {
         addToValue("4");
@@ -57,5 +56,13 @@ fdescribe('NPI Calculator', () => {
         addToValue("4");
         addToStack("");
         expect(getNpi().values()).toEqual(["4"]);
+    });
+    test('Quand appel clearDisplay() alors expression temporaire vidée', () => {        
+        addToStack("1");
+        addToValue("4");
+        clearDisplay();
+        addToValue("5");
+        addToStack("");
+        expect(getNpi().values()).toEqual(["1", "5"]);
     });
 });

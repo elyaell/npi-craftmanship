@@ -269,3 +269,21 @@ test('Si le résultat est inf à la valeur min du type utilisé, alors erreur', 
     npi.push("-");
     expect(() => npi.calculate()).toThrow("Erreur de calcul");
 });
+
+test('Si un entrant est un factoriel, alors le factoriel est calculé', () => {
+    const npi = new CalculatorNPI();
+    npi.push("4");
+    npi.push("!");
+    npi.calculate();
+    expect(npi.total()).toEqual(24);
+});
+
+test('Si une expression est NPI avec factoriel correct, alors expression calculée', () => {
+    const npi = new CalculatorNPI();
+    npi.push("3");
+    npi.push("4");
+    npi.push("!");
+    npi.push("+");
+    npi.calculate();
+    expect(npi.total()).toEqual(27);
+});
