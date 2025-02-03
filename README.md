@@ -33,7 +33,7 @@ To get started with this project, follow these steps:
    ```
 
 6. **Open the application in a web browser:**
-   Open your web browser and navigate to `http://localhost:9000` to see the NPI Calculator interface.
+   Open your web browser and navigate to `http://localhost:8080` to see the NPI Calculator interface.
 
 ## Running Tests
 

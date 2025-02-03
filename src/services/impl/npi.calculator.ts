@@ -3,15 +3,23 @@ import { IStack } from "../../models/stack";
 import { Stack } from "../../models/impl/stack.impl";
 
 export class CalculatorNPI implements ICalculator {
+
     private _stack: IStack<string> = new Stack<string>() ;
     private _total: number = 0;
 
     stack() {
         return this._stack;
     }
+    
+    values(): string[] {
+        return this._stack.values();
+    }
 
     total() {
         return this._total;
+    }
+    removeLast(): void {
+        this._stack.pop();
     }
 
     clear() {
@@ -92,6 +100,7 @@ export class CalculatorNPI implements ICalculator {
         }
 
         this._total = parseFloat(this.executeOperation());
+        this._total = parseFloat(this._total.toFixed(5));
         this._stack.push(this._total.toString());
         if (this._stack.size() !== 1) {
             throw new Error("Erreur de calcul");
