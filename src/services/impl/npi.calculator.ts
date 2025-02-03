@@ -14,6 +14,10 @@ export class CalculatorNPI implements ICalculator {
         return this._total;
     }
 
+    clear() {
+        this._stack = new Stack<string>();
+    }
+
     // Ajoute un element à la pile
     push(value: string): void {
         if (!this.isValidInput(value)) {
